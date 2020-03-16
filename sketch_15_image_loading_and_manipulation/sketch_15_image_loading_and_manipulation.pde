@@ -4,7 +4,7 @@ PImage[] imgs;
 
 void setup() {
   size(800, 800);
-  frameRate(2);
+  frameRate(1);
   
   // Initialize arrays
   folder = new java.io.File(sketchPath("data"));
@@ -36,30 +36,31 @@ void draw() {
 }
 
 // Custom function which takes two parameters of type 'PImage'
-void blendImages(PImage img0, PImage img1) {
-  for (int i = 0; i < width; i++) {
-    for (int j = 0; j < height; j++) {
-      // Create temporary variables x and y (we could also just use i and j)
-      int x = i;
-      int y = j;
-      // Create variable of type color and set to black
-      color col = color(0);
-      // Create two variables of type color which contain the current pixel color value
-      color c0 = img0.get(x, y);
-      color c1 = img1.get(x, y);
-
-      // Decide what value the variable 'col' should be
-      if (brightness(c0) > brightness(c1)) {
-        col = c0;
-      } else {
-        col = c1;
+  void blendImages(PImage img0, PImage img1) {
+    for (int i = 0; i < width; i++) {
+      for (int j = 0; j < height; j++) {
+        // Create temporary variables x and y (we could also just use i and j)
+        int x = i;
+        int y = j;
+        // Create variable of type color and set to black
+        color col = color(0);
+        // Create two variables of type color which contain the current pixel color value
+        color c0 = img0.get(x, y);
+        color c1 = img1.get(x, y);
+        
+  
+        // Decide what value the variable 'col' should be
+        if (brightness(c0) > brightness(c1)) {
+          col = c0;
+        } else {
+          col = c1;
+        }
+  
+        // Set the pixel at position x, y to the value of color variable 'col'
+        set(x, y, col);
       }
-
-      // Set the pixel at position x, y to the value of color variable 'col'
-      set(x, y, col);
     }
   }
-}
 
 // Using a different technique to blend images
 // Note: two function can not have the same name!
@@ -68,8 +69,8 @@ void blendImages(PImage img0, PImage img1) {
 //  image(a, 0, 0);
 //  blend(b, 0, 0, width, height, 0, 0, width, height, SCREEN);
 //  filter(BLUR, 3);
-//  filter(INVERT);
-//  filter(POSTERIZE, 3);
+//  //filter(INVERT);
+//  //filter(POSTERIZE, 3);
 //  //filter(INVERT);
 //}
 
