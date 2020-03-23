@@ -1,5 +1,7 @@
 # ASH
 
+[image manipulation](ASH/image%20manipulation.md)
+
 [anarchist, historian](ASH/anarchist%20historian.md)
 
 [urn](ASH/urn.md)
